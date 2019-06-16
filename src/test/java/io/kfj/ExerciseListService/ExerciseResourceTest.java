@@ -1,21 +1,25 @@
 package io.kfj.ExerciseListService;
 
+import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkus.test.h2.H2DatabaseTestResource;
 import io.quarkus.test.junit.QuarkusTest;
+import javax.ws.rs.core.MediaType;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
+@QuarkusTestResource(H2DatabaseTestResource.class)
 public class ExerciseResourceTest {
 
+
     @Test
-    public void testHelloEndpoint() {
+    public void testWebRootPath() {
         given()
-          .when().get("/index")
+          .when().get("/")
           .then()
              .statusCode(200)
-             .body(is("hello"));
+             .contentType(MediaType.APPLICATION_JSON);
     }
 
 }
