@@ -17,7 +17,7 @@ public class ExerciseResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Exercise> hello() {
+    public List<Exercise> index() {
         return er.getAll();
     }
 }
